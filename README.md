@@ -1,7 +1,5 @@
 # pratik.ai — Personal Website
 
-> **Overgoal:** Establish Pratik Bhavsar as the definitive voice in AI evaluation engineering — a destination that reflects deep expertise, real-world impact, and an accessible, founder-level public presence. The site should feel like the person: sharp, minimal, no fluff.
-
 ---
 
 ## Design System

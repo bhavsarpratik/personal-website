@@ -211,33 +211,42 @@
       color: var(--red);
     }
     .hero-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 500;
       color: var(--gray-600);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .hero-bio {
       font-size: 17px;
       color: var(--gray-600);
       line-height: 1.75;
       max-width: 540px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
     .hero-stats {
-      display: flex;
-      gap: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: start;
+      gap: 20px 32px;
       margin-bottom: 40px;
     }
     .hero-stat-num {
-      font-size: 30px;
+      font-size: 26px;
       font-weight: 900;
       letter-spacing: -0.03em;
+      line-height: 1;
     }
     .hero-stat-label {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--gray-400);
-      margin-top: 2px;
+      margin-top: 4px;
+      white-space: nowrap;
     }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+    .hero-tag-dot { animation: pulse-dot 2s ease-in-out infinite; }
     .hero-actions {
       display: flex;
       align-items: center;
@@ -308,7 +317,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 30%;
     }
     .hero-badge {
       position: absolute;
@@ -360,16 +369,20 @@
     }
     .book-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 28px 72px rgba(0,0,0,0.45); }
     .book-cover {
-      aspect-ratio: 3/4;
+      aspect-ratio: 2/3;
       position: relative;
       overflow: hidden;
       background: #0d0c0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .book-cover img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+      padding: 0;
     }
 
     .book-footer {
@@ -595,6 +608,41 @@
 
     /* ─── Experience ───────────────────────────────────── */
     #experience { background: var(--white); }
+    .company-logo-wrap {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      position: relative;
+    }
+    .company-logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: contain;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      padding: 6px;
+      display: block;
+    }
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+      font-family: var(--font);
+    }
+    .timeline-header-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
     .timeline {
       position: relative;
       padding-left: 28px;
@@ -921,7 +969,7 @@
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-photo-wrap { display: none; }
-      .books-grid { grid-template-columns: repeat(2, 1fr); }
+      .books-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
       #about .about-grid { grid-template-columns: 1fr; }
       .about-photo-wrap { display: none; }
       .oss-grid { grid-template-columns: 1fr; }
@@ -934,10 +982,10 @@
     }
     @media (max-width: 600px) {
       section { padding: 64px 0; }
-      .books-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+      .books-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
       .hack-grid { grid-template-columns: 1fr; }
       .rec-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 20px; }
+      .hero-stats { gap: 16px; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -956,9 +1004,7 @@
       <li><a href="#oss" onclick="document.querySelector('.nav-links').classList.remove('open')">Open Source</a></li>
       <li><a href="#talks" onclick="document.querySelector('.nav-links').classList.remove('open')">Talks</a></li>
       <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open')">Experience</a></li>
-      <li><a href="#hackathons" onclick="document.querySelector('.nav-links').classList.remove('open')">Hackathons</a></li>
       <li><a href="#community-writing" onclick="document.querySelector('.nav-links').classList.remove('open')">Writing</a></li>
-      <li><a href="#contact" class="nav-cta" onclick="document.querySelector('.nav-links').classList.remove('open')">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -970,80 +1016,81 @@
       <div class="hero-content">
         <div class="hero-tag">
           <span class="hero-tag-dot"></span>
-          Full Stack AI Engineer
+          Currently building at Galileo
         </div>
         <h1 class="hero-name">Pratik<br><em>Bhavsar</em></h1>
-        <p class="hero-title">AI Engineer at Galileo · Author of the Mastering GenAI Series</p>
-
-        <div class="skills-strip">
-          <span class="skill-chip"><span class="skill-chip-dot"></span>Models</span>
-          <span class="skill-chip"><span class="skill-chip-dot"></span>Datasets</span>
-          <span class="skill-chip"><span class="skill-chip-dot"></span>Benchmarks</span>
-          <span class="skill-chip"><span class="skill-chip-dot"></span>Cloud AI</span>
-          <span class="skill-chip"><span class="skill-chip-dot"></span>Blogs</span>
-          <span class="skill-chip"><span class="skill-chip-dot"></span>Books</span>
-        </div>
+        <p class="hero-title">Full Stack AI Engineer · Author of the Mastering GenAI Series</p>
 
         <p class="hero-bio">
-          I have done it all across the AI stack: trained models, built evaluation datasets,
-          designed benchmarks that the community ships to, engineered cloud AI pipelines,
-          and written hundreds of articles before distilling it all into
-          <strong>4 books on production GenAI.</strong>
-          In my years of building, AI systems never fail to surprise me in production.
-          The model is becoming a commodity. <strong>The evaluation layer is your moat.</strong>
+          I've done it all across the AI stack: trained models, built evaluation datasets,
+          designed benchmarks the community ships to, and written 100+ articles before
+          distilling it all into <strong>4 books on production GenAI.</strong>
         </p>
+
         <div class="hero-stats">
           <div>
-            <div class="hero-stat-num">23K+</div>
-            <div class="hero-stat-label">LinkedIn followers</div>
+            <div class="hero-stat-num">25K+</div>
+            <div class="hero-stat-label">LinkedIn</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">5K+</div>
+            <div class="hero-stat-label">Substack</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">100+</div>
+            <div class="hero-stat-label">Blogs</div>
           </div>
           <div>
             <div class="hero-stat-num">4</div>
-            <div class="hero-stat-label">Books published</div>
+            <div class="hero-stat-label">Books</div>
           </div>
           <div>
-            <div class="hero-stat-num">#1</div>
-            <div class="hero-stat-label">Hackathon prizes</div>
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label">Models</div>
           </div>
           <div>
-            <div class="hero-stat-num">7yrs</div>
-            <div class="hero-stat-label">Community founder</div>
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label">Benchmarks</div>
           </div>
         </div>
+
         <div class="hero-actions">
           <a href="#books" class="btn-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
             Read My Books (Free)
           </a>
-          <a href="https://www.linkedin.com/in/bhavsarpratik/" target="_blank" class="btn-outline">
-            Connect on LinkedIn →
+          <a href="#contact" class="btn-outline">
+            Get in touch →
           </a>
         </div>
+
         <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/bhavsarpratik/" target="_blank" class="social-pill">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
           <a href="https://x.com/ptkbhv" target="_blank" class="social-pill">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.26 5.632 5.904-5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             @ptkbhv
           </a>
           <a href="https://github.com/bhavsarpratik" target="_blank" class="social-pill">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            bhavsarpratik
+            GitHub
           </a>
-
-
         </div>
       </div>
 
       <div class="hero-photo-wrap">
         <div class="hero-photo-frame">
-          <img src="images/casual.jpeg" alt="Pratik Bhavsar" loading="lazy" />
+          <img src="images/san francisco.jpeg" alt="Pratik Bhavsar" loading="lazy" />
         </div>
-        <div class="hero-badge">
+        <a href="https://web.archive.org/web/20230131131523/https://cnvrg.io/ai-developers-to-watch-2023-2/" target="_blank" class="hero-badge" style="cursor:pointer; transition: box-shadow 0.2s ease, transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.15)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
           <div class="hero-badge-icon">🏆</div>
           <div class="hero-badge-text">
             <strong>Top AI Developer</strong>
             <span>to Watch · 2023</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -1071,24 +1118,24 @@
         </div>
       </a>
 
-      <!-- Book 2: Mastering Agents -->
-      <a href="https://galileo.ai/mastering-agents-ebook" target="_blank" class="book-card">
-        <div class="book-cover">
-          <img src="https://framerusercontent.com/images/1ZbEA9xinuUPSzVmp1zQv9kvi8g.jpg" alt="Mastering AI Agents book cover" loading="lazy" />
-        </div>
-        <div class="book-footer">
-          <span class="book-pages">Eval-focused guide</span>
-          <span class="book-cta">Read Free →</span>
-        </div>
-      </a>
-
-      <!-- Book 3: Mastering RAG -->
+      <!-- Book 2: Mastering RAG -->
       <a href="https://galileo.ai/mastering-rag" target="_blank" class="book-card">
         <div class="book-cover">
           <img src="https://framerusercontent.com/images/zjGqcCdBX9oL1nBZ91CQueKMVpI.png" alt="Mastering RAG 2.0 book cover" loading="lazy" />
         </div>
         <div class="book-footer">
           <span class="book-pages">240+ pages · v2.0</span>
+          <span class="book-cta">Read Free →</span>
+        </div>
+      </a>
+
+      <!-- Book 3: Mastering Agents -->
+      <a href="https://galileo.ai/mastering-agents-ebook" target="_blank" class="book-card">
+        <div class="book-cover">
+          <img src="https://framerusercontent.com/images/1ZbEA9xinuUPSzVmp1zQv9kvi8g.jpg" alt="Mastering AI Agents book cover" loading="lazy" />
+        </div>
+        <div class="book-footer">
+          <span class="book-pages">Eval-focused guide</span>
           <span class="book-cta">Read Free →</span>
         </div>
       </a>
@@ -1125,10 +1172,7 @@
           Before Galileo, I was <strong>founding engineer at Enterpret</strong> (employee #6, pre-seed) building NLP systems for customer feedback at scale, and a principal data scientist at <strong>TaskHuman</strong> designing semantic search using transformers. Earlier, I launched end-to-end AI initiatives at <strong>Morningstar</strong> as their first quantitative research hire.
         </p>
         <p>
-          My RAG evaluation research was featured in <strong>Andrew Ng's newsletter</strong>, and I've been named one of the <strong>Top AI Developers to Watch in 2023</strong>.
-        </p>
-        <p>
-          Every AI team I have worked with eventually hits the same wall. The reason is almost always the same: no rigorous evaluation layer between the AI and the user. I am building the discipline of <strong>Eval Engineering</strong> the way DevOps became a discipline 15 years ago.
+          My RAG evaluation research was featured in <a href="https://www.deeplearning.ai/the-batch/issue-265/" target="_blank" style="color: var(--red); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;"><strong>Andrew Ng's newsletter</strong></a>, I was a guest on the <a href="https://www.youtube.com/watch?v=Mp0gxUunnWI" target="_blank" style="color: var(--red); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;"><strong>Latent Space Podcast</strong></a> talking agent evaluation, and I've been named one of the <a href="https://web.archive.org/web/20230131131523/https://cnvrg.io/ai-developers-to-watch-2023-2/" target="_blank" style="color: var(--red); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;"><strong>Top AI Developers to Watch in 2023</strong></a>.
         </p>
         <div class="about-highlights">
           <div class="highlight-item">
@@ -1136,27 +1180,6 @@
             <div class="highlight-text">
               <strong>IIT Bombay M.Tech · NIT Surat B.Tech</strong>
               <span>Computer Science & Engineering</span>
-            </div>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-icon">📻</span>
-            <div class="highlight-text">
-              <strong>Latent Space Podcast</strong>
-              <span>Interview on #1 AI Engineering podcast · "Ranking Agentic LLMs"</span>
-            </div>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-icon">📰</span>
-            <div class="highlight-text">
-              <strong>Featured in Andrew Ng's Newsletter</strong>
-              <span>RAG evaluation research recognized globally</span>
-            </div>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-icon">🏆</span>
-            <div class="highlight-text">
-              <strong>1st prize in every company hackathon</strong>
-              <span>Galileo · Morningstar · Enterpret · Top 20 nationally at Microsoft</span>
             </div>
           </div>
         </div>
@@ -1312,17 +1335,23 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">Experience</div>
-      <h2 class="section-title">From pre-seed to Enterprise,<br>always at the <em>frontier</em></h2>
+      <h2 class="section-title">From pre-seed to Enterprise,<br>applying AI at the <em>edge</em></h2>
     </div>
     <div class="timeline">
 
       <div class="timeline-item current">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <div>
-            <div class="timeline-company">Galileo</div>
-            <div class="timeline-role">AI Engineer</div>
-            <div class="timeline-period">June 2023 – Present · Employee #26</div>
+          <div class="timeline-header-left">
+            <div class="company-logo-wrap">
+              <img src="https://github.com/rungalileo.png" class="company-logo-img" alt="Galileo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="company-logo" style="background:#7c3aed;display:none;">G</div>
+            </div>
+            <div>
+              <div class="timeline-company">Galileo</div>
+              <div class="timeline-role">AI Engineer</div>
+              <div class="timeline-period">June 2023 – Present · Employee #26</div>
+            </div>
           </div>
           <span class="timeline-badge">Current</span>
         </div>
@@ -1337,10 +1366,16 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <div>
-            <div class="timeline-company">Maxpool</div>
-            <div class="timeline-role">Founder</div>
-            <div class="timeline-period">January 2019 – Present</div>
+          <div class="timeline-header-left">
+            <div class="company-logo-wrap">
+              <img src="images/maxpool_logo.jpeg" class="company-logo-img" alt="Maxpool" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="company-logo" style="background:#e35654;display:none;">M</div>
+            </div>
+            <div>
+              <div class="timeline-company">Maxpool</div>
+              <div class="timeline-role">Founder</div>
+              <div class="timeline-period">January 2019 – Present</div>
+            </div>
           </div>
         </div>
         <p class="timeline-desc">
@@ -1354,10 +1389,16 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <div>
-            <div class="timeline-company">Enterpret</div>
-            <div class="timeline-role">Founding Engineer, NLP Scientist</div>
-            <div class="timeline-period">Feb 2021 – May 2023 · Employee #6 · Pre-seed</div>
+          <div class="timeline-header-left">
+            <div class="company-logo-wrap">
+              <img src="https://github.com/aavaz-ai.png" class="company-logo-img" alt="Enterpret" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="company-logo" style="background:#2563eb;display:none;">E</div>
+            </div>
+            <div>
+              <div class="timeline-company">Enterpret</div>
+              <div class="timeline-role">Founding Engineer, NLP Scientist</div>
+              <div class="timeline-period">Feb 2021 – May 2023 · Employee #6 · Pre-seed</div>
+            </div>
           </div>
         </div>
         <p class="timeline-desc">
@@ -1371,10 +1412,16 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <div>
-            <div class="timeline-company">Jina AI</div>
-            <div class="timeline-role">AI Engineer</div>
-            <div class="timeline-period">Sep 2020 – Dec 2020 · Employee #6 · Seed</div>
+          <div class="timeline-header-left">
+            <div class="company-logo-wrap">
+              <img src="https://github.com/jina-ai.png" class="company-logo-img" alt="Jina AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="company-logo" style="background:#18181b;display:none;">J</div>
+            </div>
+            <div>
+              <div class="timeline-company">Jina AI</div>
+              <div class="timeline-role">AI Engineer</div>
+              <div class="timeline-period">Sep 2020 – Dec 2020 · Employee #6 · Seed</div>
+            </div>
           </div>
         </div>
         <p class="timeline-desc">
@@ -1388,10 +1435,16 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <div>
-            <div class="timeline-company">TaskHuman</div>
-            <div class="timeline-role">Principal Data Scientist</div>
-            <div class="timeline-period">Oct 2019 – Sep 2020 · Employee #15 · Seed</div>
+          <div class="timeline-header-left">
+            <div class="company-logo-wrap">
+              <img src="images/taskhuman_logo.jpeg" class="company-logo-img" alt="TaskHuman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="company-logo" style="background:#059669;display:none;">T</div>
+            </div>
+            <div>
+              <div class="timeline-company">TaskHuman</div>
+              <div class="timeline-role">Principal Data Scientist</div>
+              <div class="timeline-period">Oct 2019 – Sep 2020 · Employee #15 · Seed</div>
+            </div>
           </div>
         </div>
         <p class="timeline-desc">
@@ -1405,10 +1458,16 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <div>
-            <div class="timeline-company">Morningstar</div>
-            <div class="timeline-role">Senior Data Scientist</div>
-            <div class="timeline-period">Sep 2017 – Oct 2019 · 1st hire in quant research</div>
+          <div class="timeline-header-left">
+            <div class="company-logo-wrap">
+              <img src="https://github.com/morningstar.png" class="company-logo-img" alt="Morningstar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="company-logo" style="background:#b45309;display:none;">★</div>
+            </div>
+            <div>
+              <div class="timeline-company">Morningstar</div>
+              <div class="timeline-role">Senior Data Scientist</div>
+              <div class="timeline-period">Sep 2017 – Oct 2019 · 1st hire in quant research</div>
+            </div>
           </div>
         </div>
         <p class="timeline-desc">
@@ -1468,157 +1527,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════ HACKATHONS ═══════════════════ -->
-<section id="hackathons">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Hackathons</div>
-      <h2 class="section-title">First place,<br><em>every time</em></h2>
-      <p class="section-subtitle">Hackathons taught me to build fast, think clearly under pressure, and ship. First place in every company hackathon and nationally ranked in open competitions.</p>
-    </div>
 
-    <div class="hack-grid">
-
-      <div class="hack-card">
-        <img
-          class="hack-img"
-          src="https://miro.medium.com/v2/resize:fit:1019/format:webp/1*nDGupbGBRo7tctGeOXDq3A.jpeg"
-          alt="Coinberg hackathon 2018"
-          loading="lazy"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="hack-img-placeholder" style="display:none; background:#f0efeb;">💰</div>
-        <div class="hack-body">
-          <span class="hack-prize">🥇 1st Prize</span>
-          <div class="hack-title">Coinberg: Ultimate Crypto Challenge 2018</div>
-          <p class="hack-desc">Built a cryptocurrency trading system covering arbitrage detection, sentiment analysis, portfolio management, and trend forecasting in 48 hours. Won against a large field of competing teams.</p>
-          <div class="hack-tags">
-            <span class="tag">Algo Trading</span><span class="tag">NLP</span><span class="tag">Sentiment Analysis</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hack-card">
-        <img
-          class="hack-img"
-          src="https://miro.medium.com/v2/resize:fit:1019/format:webp/1*nFG2HlKmpUMi2FUVbrFLmg.png"
-          alt="Morningstar hackathon"
-          loading="lazy"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="hack-img-placeholder" style="display:none; background:#f0efeb;">📄</div>
-        <div class="hack-body">
-          <span class="hack-prize">🥇 1st Prize</span>
-          <div class="hack-title">Morningstar: Information Extraction Hackathon</div>
-          <p class="hack-desc">Won the internal Morningstar hackathon by building an ML solution to extract tables and financial datapoints from Indian company annual reports. Set the bar for the internal data science team.</p>
-          <div class="hack-tags">
-            <span class="tag">Document AI</span><span class="tag">Table Extraction</span><span class="tag">Deep Learning</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hack-card">
-        <img
-          class="hack-img"
-          src="https://miro.medium.com/v2/resize:fit:1019/format:webp/1*va3sFwIm26snbj5ly9ZsgA.jpeg"
-          alt="Microsoft hackathon"
-          loading="lazy"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="hack-img-placeholder" style="display:none; background:#f0efeb;">🔍</div>
-        <div class="hack-body">
-          <span class="hack-prize">Top 20 Nationally</span>
-          <div class="hack-title">Microsoft: Search Ranking Challenge</div>
-          <p class="hack-desc">A 35-day online competition to build a QA ranking system, finding the best answer to a question from 10 candidates. Placed in the top 20 nationally out of thousands of participants.</p>
-          <div class="hack-tags">
-            <span class="tag">Information Retrieval</span><span class="tag">NLP</span><span class="tag">Ranking</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hack-card">
-        <div class="hack-img-placeholder" style="background:#f0f4ff;">🤖</div>
-        <div class="hack-body">
-          <span class="hack-prize">🥇 1st Prize</span>
-          <div class="hack-title">Galileo: Internal AI Hackathon</div>
-          <p class="hack-desc">Continued the streak at Galileo, winning the internal company hackathon. Consistent 1st place finishes across Galileo, Morningstar, and Enterpret hackathons: three companies, three wins.</p>
-          <div class="hack-tags">
-            <span class="tag">GenAI</span><span class="tag">Evaluation</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hack-card">
-        <div class="hack-img-placeholder" style="background:#fff4f0;">🌐</div>
-        <div class="hack-body">
-          <span class="hack-prize">Top 20 Globally</span>
-          <div class="hack-title">SEMEVAL: Computational Semantics</div>
-          <p class="hack-desc">Ranked among the top 20 teams globally in the SEMEVAL international competition on computational semantics and natural language understanding.</p>
-          <div class="hack-tags">
-            <span class="tag">NLP</span><span class="tag">Semantics</span><span class="tag">Research</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hack-card">
-        <div class="hack-img-placeholder" style="background:#f0fff4;">💱</div>
-        <div class="hack-body">
-          <span class="hack-prize">🥇 1st Prize</span>
-          <div class="hack-title">Unifynd: Algo Trading Hackathon</div>
-          <p class="hack-desc">Built an algorithmic trading solution using ML. First major hackathon win that kicked off a streak. Full solution open-sourced on GitHub for the community.</p>
-          <div class="hack-tags">
-            <span class="tag">Algo Trading</span><span class="tag">ML</span><span class="tag">Finance</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-
-  </div>
-</section>
-
-<!-- ═══════════════════ RECOGNITION ══════════════════ -->
-<section id="recognition">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Recognition</div>
-      <h2 class="section-title">Wins that <em>mattered</em></h2>
-    </div>
-    <div class="rec-grid">
-      <a href="https://web.archive.org/web/20230131131523/https://cnvrg.io/ai-developers-to-watch-2023-2/" target="_blank" class="rec-card">
-        <div class="rec-icon">🏆</div>
-        <h4>Top AI Developer 2023</h4>
-        <p>Named one of the Top AI Developers to Watch by cnvrg.io, a recognition of consistent work at the frontier</p>
-      </a>
-      <div class="rec-card">
-        <div class="rec-icon">📰</div>
-        <h4>Andrew Ng's Newsletter</h4>
-        <p>RAG evaluation research featured in one of the most read AI newsletters in the world</p>
-      </div>
-      <div class="rec-card">
-        <div class="rec-icon">🎙️</div>
-        <h4>Latent Space Podcast</h4>
-        <p>Interview on the #1 AI Engineering podcast, discussing agent evaluation and leaderboards</p>
-      </div>
-      <div class="rec-card">
-        <div class="rec-icon">🥇</div>
-        <h4>Hackathon Champion</h4>
-        <p>1st prize in every company-hosted hackathon: Galileo, Morningstar, and Enterpret</p>
-      </div>
-      <div class="rec-card">
-        <div class="rec-icon">🔍</div>
-        <h4>Microsoft Search Challenge</h4>
-        <p>Placed top 20 nationally in Microsoft's Search Ranking Challenge</p>
-      </div>
-      <div class="rec-card">
-        <div class="rec-icon">🌐</div>
-        <h4>SEMEVAL Competition</h4>
-        <p>Ranked top 20 teams globally in the SEMEVAL computational semantics competition</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════ CONTACT ═══════════════════════ -->
 <section id="contact">
