@@ -7,10 +7,13 @@
   <meta name="description" content="Full Stack AI Engineer at Galileo. Built models, datasets, benchmarks and cloud AI systems. Author of the Mastering GenAI series." />
   <meta property="og:title" content="Pratik Bhavsar, Full Stack AI Engineer and Author" />
   <meta property="og:description" content="AI Engineer at Galileo. Author of 4 books on GenAI. Creator of the Agent Leaderboard and Hallucination Index." />
-  <meta property="og:image" content="images/casual.jpeg" />
+  <meta property="og:image" content="https://pratik.ai/images/casual.jpeg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@ptkbhv" />
+  <link rel="canonical" href="https://pratik.ai/" />
+  <meta property="og:url" content="https://pratik.ai/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -52,7 +55,7 @@
 
     /* ─── Layout ───────────────────────────────────────── */
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-    section { padding: 96px 0; }
+    section { padding: 96px 0; scroll-margin-top: 60px; }
     .section-label {
       font-size: 11px;
       font-weight: 700;
@@ -129,6 +132,42 @@
       padding: 7px 14px !important;
     }
     .nav-cta:hover { background: var(--gray-800) !important; }
+
+    /* Mobile menu */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--black);
+    }
+    .nav-toggle svg { width: 22px; height: 22px; display: block; }
+    @media (max-width: 900px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px; left: 0; right: 0;
+        background: rgba(247, 246, 242, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 16px 24px 24px;
+        border-bottom: 1px solid var(--gray-200);
+        gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 12px; font-size: 15px; }
+    }
+
+    /* ─── Fade-in animation ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content { animation: fadeUp 0.6s ease-out both; }
+    .hero-photo-wrap { animation: fadeUp 0.6s ease-out 0.15s both; }
 
     /* ─── Hero ─────────────────────────────────────────── */
     #hero {
@@ -322,126 +361,15 @@
     .book-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 28px 72px rgba(0,0,0,0.45); }
     .book-cover {
       aspect-ratio: 3/4;
-      background: #0d0c0a;
-      padding: 24px 20px 20px;
-      display: flex;
-      flex-direction: column;
       position: relative;
       overflow: hidden;
+      background: #0d0c0a;
     }
-    .book-cover-galileo {
-      font-size: 10px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.38);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 14px;
-    }
-    .galileo-star {
-      width: 12px; height: 12px;
-      color: rgba(255,255,255,0.38);
-    }
-    .book-mastering {
-      font-size: 10px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.4);
-      line-height: 1;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-    .book-subtitle-text {
-      font-size: clamp(22px, 2.8vw, 32px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 10px;
-      margin-top: 6px;
-    }
-    .book-desc-small {
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.5;
-      flex: 1;
-    }
-    .book-graphic {
-      position: absolute;
-      bottom: 16px;
-      right: 0;
-      left: 0;
-      height: 90px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-    /* RAG illustration  */
-    .rag-art { position: relative; width: 100%; height: 80px; overflow: hidden; }
-    .rag-art::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 120px; height: 60px;
-      background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
-      border-radius: 8px 8px 0 0;
-      opacity: 0.15;
-    }
-
-    /* Arrow art for agents/judge */
-    .arrow-art {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 6px;
-      padding-bottom: 8px;
+    .book-cover img {
       width: 100%;
-    }
-    .arrow-up {
-      width: 38px; height: 48px;
-      border-radius: 50% 50% 0 0 / 60% 60% 0 0;
-      border-top: 5px solid;
-      border-left: 5px solid;
-      border-right: 5px solid;
-      border-bottom: none;
-    }
-    .arrow-down {
-      width: 38px; height: 48px;
-      border-radius: 0 0 50% 50% / 0 0 60% 60%;
-      border-bottom: 5px solid;
-      border-left: 5px solid;
-      border-right: 5px solid;
-      border-top: none;
-    }
-    .arrow-side {
-      width: 28px; height: 38px;
-      opacity: 0.25;
-      border-radius: 0 0 50% 50% / 0 0 60% 60%;
-      border-bottom: 5px solid;
-      border-left: 5px solid;
-      border-right: 5px solid;
-      border-top: none;
-      transform: rotate(-20deg);
-      align-self: center;
-    }
-
-    /* Multi-agent people art */
-    .multiagent-art {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 8px;
-      padding-bottom: 6px;
-    }
-    .person-orb {
-      border-radius: 50%;
-      background: linear-gradient(135deg, #a78bfa, #6366f1);
-    }
-    .conn-line {
-      width: 20px; height: 1px;
-      background: rgba(99, 102, 241, 0.3);
-      align-self: center;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .book-footer {
@@ -1019,14 +947,18 @@
 <nav>
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">Pratik <span>Bhavsar</span></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
     <ul class="nav-links">
-      <li><a href="#books">Books</a></li>
-      <li><a href="#oss">Open Source</a></li>
-      <li><a href="#talks">Talks</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#hackathons">Hackathons</a></li>
-      <li><a href="#community-writing">Writing</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <li><a href="#books" onclick="document.querySelector('.nav-links').classList.remove('open')">Books</a></li>
+      <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open')">About</a></li>
+      <li><a href="#oss" onclick="document.querySelector('.nav-links').classList.remove('open')">Open Source</a></li>
+      <li><a href="#talks" onclick="document.querySelector('.nav-links').classList.remove('open')">Talks</a></li>
+      <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open')">Experience</a></li>
+      <li><a href="#hackathons" onclick="document.querySelector('.nav-links').classList.remove('open')">Hackathons</a></li>
+      <li><a href="#community-writing" onclick="document.querySelector('.nav-links').classList.remove('open')">Writing</a></li>
+      <li><a href="#contact" class="nav-cta" onclick="document.querySelector('.nav-links').classList.remove('open')">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -1131,24 +1063,7 @@
       <!-- Book 1: Multi-Agent Systems -->
       <a href="https://galileo.ai/multi-agent-book" target="_blank" class="book-card">
         <div class="book-cover">
-          <div class="book-cover-galileo">
-            <svg class="galileo-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-            Galileo
-          </div>
-          <div class="book-mastering">Mastering</div>
-          <div class="book-subtitle-text" style="color:#e35654;">Multi-Agent<br>Systems</div>
-          <div class="book-desc-small">Real-world strategies for multi-agent development. 165 pages.</div>
-          <div class="book-graphic">
-            <div class="multiagent-art">
-              <div class="person-orb" style="width:28px;height:28px;"></div>
-              <div class="conn-line"></div>
-              <div class="person-orb" style="width:36px;height:36px;background:linear-gradient(135deg,#e35654,#c94442);"></div>
-              <div class="conn-line"></div>
-              <div class="person-orb" style="width:24px;height:24px;background:linear-gradient(135deg,#10b981,#059669);"></div>
-              <div class="conn-line"></div>
-              <div class="person-orb" style="width:22px;height:22px;background:linear-gradient(135deg,#f59e0b,#d97706);"></div>
-            </div>
-          </div>
+          <img src="https://framerusercontent.com/images/8sxcay1PA8ZRHrTiHgyayWbyElY.jpg" alt="Mastering Multi-Agent Systems book cover" loading="lazy" />
         </div>
         <div class="book-footer">
           <span class="book-pages">165 pages · Print edition</span>
@@ -1159,21 +1074,7 @@
       <!-- Book 2: Mastering Agents -->
       <a href="https://galileo.ai/mastering-agents-ebook" target="_blank" class="book-card">
         <div class="book-cover">
-          <div class="book-cover-galileo">
-            <svg class="galileo-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-            Galileo
-          </div>
-          <div class="book-mastering">Mastering</div>
-          <div class="book-subtitle-text" style="color:#3b82f6;">AI Agents</div>
-          <div class="book-desc-small">A comprehensive guide for evaluating AI agents in production.</div>
-          <div class="book-graphic">
-            <div class="arrow-art">
-              <div class="arrow-side" style="border-color:#3b82f6;"></div>
-              <div class="arrow-up" style="border-color:#3b82f6;"></div>
-              <div class="arrow-down" style="border-color:#111;"></div>
-              <div class="arrow-side" style="border-color:#111; transform:rotate(20deg);"></div>
-            </div>
-          </div>
+          <img src="https://framerusercontent.com/images/1ZbEA9xinuUPSzVmp1zQv9kvi8g.jpg" alt="Mastering AI Agents book cover" loading="lazy" />
         </div>
         <div class="book-footer">
           <span class="book-pages">Eval-focused guide</span>
@@ -1184,22 +1085,7 @@
       <!-- Book 3: Mastering RAG -->
       <a href="https://galileo.ai/mastering-rag" target="_blank" class="book-card">
         <div class="book-cover">
-          <div class="book-cover-galileo">
-            <svg class="galileo-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-            Galileo
-          </div>
-          <div class="book-mastering">Mastering</div>
-          <div class="book-subtitle-text" style="color:#e35654;">RAG 2.0</div>
-          <div class="book-desc-small">Harnessing the power of retrieval-augmented generation in AI. 240+ pages.</div>
-          <div class="book-graphic">
-            <div style="display:flex;justify-content:center;align-items:flex-end;gap:5px;padding-bottom:8px;">
-              <div style="width:18px;height:52px;background:linear-gradient(to top,#e35654,#f87171);border-radius:4px 4px 2px 2px;opacity:0.8;"></div>
-              <div style="width:18px;height:72px;background:linear-gradient(to top,#3b82f6,#60a5fa);border-radius:4px 4px 2px 2px;opacity:0.8;"></div>
-              <div style="width:18px;height:62px;background:linear-gradient(to top,#10b981,#34d399);border-radius:4px 4px 2px 2px;opacity:0.8;"></div>
-              <div style="width:18px;height:80px;background:linear-gradient(to top,#f59e0b,#fbbf24);border-radius:4px 4px 2px 2px;opacity:0.8;"></div>
-              <div style="width:18px;height:55px;background:linear-gradient(to top,#8b5cf6,#a78bfa);border-radius:4px 4px 2px 2px;opacity:0.8;"></div>
-            </div>
-          </div>
+          <img src="https://framerusercontent.com/images/zjGqcCdBX9oL1nBZ91CQueKMVpI.png" alt="Mastering RAG 2.0 book cover" loading="lazy" />
         </div>
         <div class="book-footer">
           <span class="book-pages">240+ pages · v2.0</span>
@@ -1210,21 +1096,7 @@
       <!-- Book 4: LLM-as-a-Judge -->
       <a href="https://galileo.ai/mastering-llm-as-a-judge" target="_blank" class="book-card">
         <div class="book-cover">
-          <div class="book-cover-galileo">
-            <svg class="galileo-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-            Galileo
-          </div>
-          <div class="book-mastering">Mastering</div>
-          <div class="book-subtitle-text" style="color:#e35654;">LLM-as-a-<br>Judge</div>
-          <div class="book-desc-small">Evaluate AI outputs with high precision using LLMs as automated judges.</div>
-          <div class="book-graphic">
-            <div class="arrow-art">
-              <div class="arrow-side" style="border-color:#e35654;opacity:0.3;"></div>
-              <div class="arrow-up" style="border-color:#e35654;"></div>
-              <div class="arrow-down" style="border-color:#111;"></div>
-              <div class="arrow-side" style="border-color:#111;opacity:0.3;transform:rotate(20deg);"></div>
-            </div>
-          </div>
+          <img src="https://framerusercontent.com/images/jYIoKPKY2GRBENYRo341gx3nGQ4.jpg" alt="Mastering LLM-as-a-Judge book cover" loading="lazy" />
         </div>
         <div class="book-footer">
           <span class="book-pages">Precision eval guide</span>
@@ -1365,7 +1237,7 @@
       <p class="section-subtitle">From the Latent Space podcast to PyData to community livestreams. Speaking forces you to clarify your thinking in ways writing cannot.</p>
     </div>
     <div class="talks-grid">
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PL2H7HbmQHDJW7JmLzMRkZMeNV_wOxdcXi&index=1" target="_blank" class="talk-card">
+      <a href="https://www.youtube.com/playlist?list=PL2H7HbmQHDJW7JmLzMRkZMeNV_wOxdcXi" target="_blank" class="talk-card">
         <span class="talk-num">01</span>
         <div class="talk-info">
           <h4>Ranking Agentic LLMs: Galileo Agent Leaderboard</h4>
@@ -1753,7 +1625,7 @@
   <div class="container">
     <div class="section-label" style="text-align:center; color:rgba(255,255,255,0.4);">Get in touch</div>
     <h2 class="section-title">Let's build something<br><em>worth evaluating</em></h2>
-    <p class="section-subtitle">Whether it is AI evaluation, production systems, speaking, or community, I am always up for a good conversation.</p>
+    <p class="section-subtitle" style="margin: 0 auto 48px;">Whether it is AI evaluation, production systems, speaking, or community, I am always up for a good conversation.</p>
     <div class="contact-socials">
       <a href="https://www.linkedin.com/in/bhavsarpratik/" target="_blank" class="contact-social-btn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>

@@ -39,7 +39,7 @@ images/
 5. **Open Source** — Agent Leaderboard, Hallucination Index, BRAG
 6. **Talks** — 6 featured talks from 11-video YouTube playlist
 7. **Experience** — Full career timeline (Galileo → Maxpool → Enterpret → Jina → TaskHuman → Morningstar)
-8. **Community & Writing** — Maxpool, Substack (pakodas), blogs.pratik.ai, galileo.ai/blog
+8. **Community & Writing** — Maxpool, Substack (pakodas), galileo.ai/blog
 9. **Recognition** — Top AI Developer 2023, Andrew Ng newsletter, Latent Space, hackathon wins
 10. **Contact** — Social links grid (LinkedIn, Twitter, GitHub, Substack, Maxpool, Email)
 11. **Footer**
@@ -111,10 +111,9 @@ git push origin main
 |---|---|
 | Site | https://pratik.ai |
 | LinkedIn | https://linkedin.com/in/bhavsarpratik |
-| Twitter / X | https://twitter.com/nlpguy_ |
+| Twitter / X | https://x.com/ptkbhv |
 | GitHub | https://github.com/bhavsarpratik |
 | Substack | https://pakodas.substack.com |
-| Blog | https://blogs.pratik.ai |
 | Community | https://maxpool.dev |
 | YouTube | [Talks Playlist](https://www.youtube.com/playlist?list=PL2H7HbmQHDJW7JmLzMRkZMeNV_wOxdcXi) |
 | Galileo | https://galileo.ai/blog |
