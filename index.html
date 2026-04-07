@@ -6,7 +6,7 @@
   <title>Pratik Bhavsar, Full Stack AI Engineer and Author</title>
   <meta name="description" content="Full Stack AI Engineer at Galileo. Built models, datasets, benchmarks and cloud AI systems. Author of the Mastering GenAI series." />
   <meta property="og:title" content="Pratik Bhavsar, Full Stack AI Engineer and Author" />
-  <meta property="og:description" content="AI Engineer at Galileo. Author of 4 books on GenAI. Creator of the Agent Leaderboard and Hallucination Index." />
+  <meta property="og:description" content="AI Engineer at Galileo. Author of 5 books on GenAI. Creator of the Agent Leaderboard and Hallucination Index." />
   <meta property="og:image" content="https://pratik.ai/images/casual.jpeg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -621,6 +621,221 @@
       transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
     }
     .book-card:hover::after { width: 100%; }
+    /* Featured book hero card */
+    .book-featured {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      background: var(--bg-card);
+      border: 1px solid rgba(227, 84, 84, 0.25);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 2px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .book-featured:hover {
+      border-color: rgba(227, 84, 84, 0.5);
+      box-shadow: 0 0 40px rgba(227,84,84,0.12), 0 8px 32px rgba(0,0,0,0.3);
+      transform: translateY(-4px);
+    }
+    /* top accent line */
+    .book-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), #ff8a65, var(--red));
+      z-index: 2;
+    }
+    /* grid pattern overlay on right side */
+    .book-featured::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 60%;
+      background-image:
+        linear-gradient(rgba(227,84,84,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(227,84,84,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Lifecycle SVG visual ── */
+    .book-featured-visual {
+      position: relative;
+      background: linear-gradient(180deg, #06091a 0%, #050710 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px 24px;
+      min-height: 380px;
+    }
+    .book-featured-visual::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(227,84,84,0.06), transparent 70%);
+      pointer-events: none;
+    }
+    .lifecycle-svg {
+      width: 100%;
+      height: auto;
+    }
+    @keyframes lc-dashFlow {
+      to { stroke-dashoffset: -40; }
+    }
+    @keyframes lc-nodePulse {
+      0%, 100% { opacity: 0.12; }
+      50%      { opacity: 0.3; }
+    }
+    @keyframes lc-nodeFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-3px); }
+    }
+
+    .book-featured-body {
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+      border-left: 1px solid var(--border);
+    }
+    .book-featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+    }
+    .book-featured-badge-new {
+      background: var(--red);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .book-featured-badge-free {
+      background: rgba(88, 188, 130, 0.12);
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .book-featured-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .book-featured-tagline {
+      font-size: 14px;
+      color: var(--gray-300);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 600px;
+    }
+    .book-featured-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .book-featured-topic {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--gray-400);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+    .book-featured-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: 0.5px;
+      width: fit-content;
+      transition: gap 0.3s;
+    }
+    .book-featured:hover .book-featured-cta { gap: 12px; }
+    .book-featured-meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .book-featured-meta span { display: flex; align-items: center; gap: 4px; }
+    @media (max-width: 900px) {
+      .book-featured { grid-template-columns: 1fr; }
+      .book-featured-visual { min-height: 280px; padding: 16px; }
+      .book-featured-body { padding: 24px; border-left: none; border-top: 1px solid var(--border); }
+      .book-featured-title { font-size: 22px; }
+    }
+    @media (max-width: 600px) {
+      .book-featured-visual { padding: 8px; min-height: 200px; }
+      .book-featured-body { padding: 20px 16px; }
+      .book-featured-title { font-size: 20px; }
+    }
+    /* Announcement ribbon */
+    .announce-ribbon {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+    .announce-ribbon .announce-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .announce-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      text-transform: uppercase;
+    }
+    .announce-ribbon a {
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .announce-ribbon a:hover { color: var(--red); }
+    .announce-arrow { margin-left: 4px; }
     .book-cover {
       aspect-ratio: 2/3;
       position: relative;
@@ -823,6 +1038,121 @@
       transition: all 0.2s;
     }
     .oss-link-secondary:hover { border-color: var(--gray-400); color: var(--white); }
+
+    /* ── Benchmark featured card ── */
+    .bench-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .bench-featured:hover {
+      border-color: var(--border-h);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .bench-featured::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--red);
+      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .bench-featured:hover::after { width: 100%; }
+    .bench-featured-cover {
+      position: relative;
+      overflow: hidden;
+      background: #08080a;
+    }
+    .bench-featured-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .bench-featured:hover .bench-featured-cover img {
+      transform: scale(1.03);
+    }
+    .bench-featured-body {
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+    .bench-featured-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .bench-featured-desc {
+      font-size: 14px;
+      color: var(--gray-300);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .bench-stats-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .bench-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bench-stat-val {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .bench-stat-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .bench-links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .bench-deep-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: none;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 900px) {
+      .bench-featured { grid-template-columns: 1fr; }
+      .bench-featured-cover { max-height: 260px; }
+      .bench-featured-body { padding: 24px; }
+      .bench-featured-title { font-size: 22px; }
+    }
+    @media (max-width: 600px) {
+      .bench-featured-body { padding: 20px 16px; }
+      .bench-stats-row { gap: 16px; }
+    }
 
     /* ═══ PIPELINE VISUALIZATION ═══ */
     .pipeline-section { padding: 0 0 120px; position: relative; z-index: 2; }
@@ -1462,7 +1792,7 @@
     <ul class="nav-links">
       <li><a href="#books" onclick="document.querySelector('.nav-links').classList.remove('open')">Books</a></li>
       <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open')">About</a></li>
-      <li><a href="#oss" onclick="document.querySelector('.nav-links').classList.remove('open')">Open Source</a></li>
+      <li><a href="#oss" onclick="document.querySelector('.nav-links').classList.remove('open')">Benchmarks</a></li>
       <li><a href="#talks" onclick="document.querySelector('.nav-links').classList.remove('open')">Talks</a></li>
       <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open')">Experience</a></li>
       <li><a href="#community-writing" onclick="document.querySelector('.nav-links').classList.remove('open')">Writing</a></li>
@@ -1470,6 +1800,14 @@
     </ul>
   </div>
 </nav>
+
+<!-- ═══ ANNOUNCEMENT RIBBON ═══ -->
+<div class="announce-ribbon">
+  <div class="announce-inner">
+    <span class="announce-label">New Book</span>
+    <a href="https://evalengineering.com" target="_blank">Eval Engineering — Master AI Evals for Production <span class="announce-arrow">→</span></a>
+  </div>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
@@ -1494,7 +1832,7 @@
         <p class="hero-bio">
           I've done it all across the AI stack: trained models, built evaluation datasets,
           designed benchmarks the community ships to, and written 100+ articles before
-          distilling it all into <strong>4 books on production GenAI.</strong>
+          distilling it all into <strong>5 books on production GenAI.</strong>
         </p>
 
         <div class="hero-stats">
@@ -1511,7 +1849,7 @@
             <div class="hero-stat-label">Blogs</div>
           </div>
           <div>
-            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-num">5</div>
             <div class="hero-stat-label">Books</div>
           </div>
           <div>
@@ -1564,7 +1902,7 @@
 <!-- ═══ STATS STRIP ═══ -->
 <div class="stats-strip reveal" id="stats-strip">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-val">4</div><div class="stat-label">Books</div></div>
+    <div class="stat"><div class="stat-val">5</div><div class="stat-label">Books</div></div>
     <div class="stat"><div class="stat-val">25<span class="unit">K+</span></div><div class="stat-label">Followers</div></div>
     <div class="stat"><div class="stat-val">100<span class="unit">+</span></div><div class="stat-label">Articles</div></div>
     <div class="stat"><div class="stat-val">11</div><div class="stat-label">Talks</div></div>
@@ -1576,7 +1914,7 @@
 <div class="ticker-wrap">
   <div class="ticker">
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--red)"></div>Agent Leaderboard &middot; 445+ Likes</div>
-    <div class="ticker-item"><div class="ticker-dot" style="background:var(--blue)"></div>4 Books Published</div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--blue)"></div>5 Books Published</div>
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--green)"></div>Featured in Andrew Ng's Newsletter</div>
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--purple)"></div>Top AI Developer 2023</div>
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--red)"></div>25K+ LinkedIn Followers</div>
@@ -1589,7 +1927,7 @@
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--purple)"></div>5K+ Substack Subscribers</div>
     <!-- Duplicate for seamless loop -->
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--red)"></div>Agent Leaderboard &middot; 445+ Likes</div>
-    <div class="ticker-item"><div class="ticker-dot" style="background:var(--blue)"></div>4 Books Published</div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--blue)"></div>5 Books Published</div>
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--green)"></div>Featured in Andrew Ng's Newsletter</div>
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--purple)"></div>Top AI Developer 2023</div>
     <div class="ticker-item"><div class="ticker-dot" style="background:var(--red)"></div>25K+ LinkedIn Followers</div>
@@ -1610,8 +1948,190 @@
       <div class="section-num">01</div>
       <div class="section-label">Mastering GenAI Series</div>
       <h2 class="section-title">Guides on Building<br>Production AI</h2>
-      <p class="section-subtitle">Four comprehensive guides on the most critical topics in modern AI engineering: RAG, agents, evaluation and LLM judges. All free.</p>
+      <p class="section-subtitle">Five comprehensive guides on the most critical topics in modern AI engineering — starting with the latest, Eval Engineering. All free.</p>
     </div>
+
+    <a href="https://evalengineering.com" target="_blank" class="book-featured">
+      <div class="book-featured-visual">
+        <svg class="lifecycle-svg" viewBox="0 0 960 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lcNodeGrad" x1="0" y1="0" x2="0.5" y2="1">
+              <stop offset="0%" stop-color="rgba(227,84,84,0.1)"/>
+              <stop offset="100%" stop-color="rgba(227,84,84,0.02)"/>
+            </linearGradient>
+            <marker id="lcArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="rgba(227,84,84,0.5)"/>
+            </marker>
+            <filter id="lcGlow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <style>
+              @keyframes lcDash { to { stroke-dashoffset: -40; } }
+              @keyframes lcPulse { 0%,100% { opacity: 0.12; } 50% { opacity: 0.3; } }
+            </style>
+          </defs>
+
+          <!-- ── Arrow paths (static) ── -->
+          <path d="M 130 180 L 130 80.5 Q 130 62.5 148 62.5 L 370 62.5" fill="none" stroke="rgba(227,84,84,0.15)" stroke-width="1.5" marker-end="url(#lcArrow)"/>
+          <path d="M 590 62.5 L 802 62.5 Q 820 62.5 820 80.5 L 820 175" fill="none" stroke="rgba(227,84,84,0.15)" stroke-width="1.5" marker-end="url(#lcArrow)"/>
+          <path d="M 820 240 L 820 402 Q 820 420 802 420 L 680 420" fill="none" stroke="rgba(227,84,84,0.15)" stroke-width="1.5" marker-end="url(#lcArrow)"/>
+          <path d="M 510 420 L 435 420" fill="none" stroke="rgba(227,84,84,0.15)" stroke-width="1.5" marker-end="url(#lcArrow)"/>
+          <path d="M 250 420 L 148 420 Q 130 420 130 402 L 130 270" fill="none" stroke="rgba(227,84,84,0.15)" stroke-width="1.5" marker-end="url(#lcArrow)"/>
+
+          <!-- Sub-arrows to LLM/Prompt/Dataset -->
+          <line x1="416" y1="105" x2="416" y2="132" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <line x1="480" y1="105" x2="480" y2="132" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <line x1="544" y1="105" x2="544" y2="132" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+
+          <!-- Feedback loop (Autotune) -->
+          <path d="M 820 138 L 938 138 Q 956 138 956 156 L 956 312 Q 956 330 938 330 L 878 330 Q 860 330 860 312 L 860 252" fill="none" stroke="rgba(227,84,84,0.2)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <path d="M 820 138 L 938 138 Q 956 138 956 156 L 956 312 Q 956 330 938 330 L 878 330 Q 860 330 860 312 L 860 252" fill="none" stroke="rgba(227,84,84,0.45)" stroke-width="2" stroke-dasharray="8 32" style="animation: lcDash 2s linear infinite"/>
+
+          <!-- ── Animated flowing dots along paths ── -->
+          <!-- Path 1: Monitor → Create -->
+          <g>
+            <circle r="4" fill="rgba(227,84,84,0.9)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="0s" path="M 130 180 L 130 80.5 Q 130 62.5 148 62.5 L 370 62.5"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="0s"/>
+            </circle>
+            <circle r="2.5" fill="rgba(227,84,84,0.5)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="0.15s" path="M 130 180 L 130 80.5 Q 130 62.5 148 62.5 L 370 62.5"/>
+              <animate attributeName="opacity" values="0;0.6;0.6;0" dur="3s" repeatCount="indefinite" begin="0.15s"/>
+            </circle>
+          </g>
+          <!-- Path 2: Create → Tuning -->
+          <g>
+            <circle r="4" fill="rgba(227,84,84,0.9)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="1.2s" path="M 590 62.5 L 802 62.5 Q 820 62.5 820 80.5 L 820 175"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="1.2s"/>
+            </circle>
+            <circle r="2.5" fill="rgba(227,84,84,0.5)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="1.35s" path="M 590 62.5 L 802 62.5 Q 820 62.5 820 80.5 L 820 175"/>
+              <animate attributeName="opacity" values="0;0.6;0.6;0" dur="3s" repeatCount="indefinite" begin="1.35s"/>
+            </circle>
+          </g>
+          <!-- Path 3: Tuning → Score -->
+          <g>
+            <circle r="4" fill="rgba(227,84,84,0.9)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="2.4s" path="M 820 240 L 820 402 Q 820 420 802 420 L 680 420"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="2.4s"/>
+            </circle>
+            <circle r="2.5" fill="rgba(227,84,84,0.5)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="2.55s" path="M 820 240 L 820 402 Q 820 420 802 420 L 680 420"/>
+              <animate attributeName="opacity" values="0;0.6;0.6;0" dur="3s" repeatCount="indefinite" begin="2.55s"/>
+            </circle>
+          </g>
+          <!-- Path 4: Score → Fine-tune -->
+          <g>
+            <circle r="4" fill="rgba(227,84,84,0.9)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="3.6s" path="M 510 420 L 435 420"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="3.6s"/>
+            </circle>
+          </g>
+          <!-- Path 5: Fine-tune → Monitor -->
+          <g>
+            <circle r="4" fill="rgba(227,84,84,0.9)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="4.8s" path="M 250 420 L 148 420 Q 130 420 130 402 L 130 270"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="4.8s"/>
+            </circle>
+            <circle r="2.5" fill="rgba(227,84,84,0.5)" filter="url(#lcGlow)">
+              <animateMotion dur="3s" repeatCount="indefinite" begin="4.95s" path="M 250 420 L 148 420 Q 130 420 130 402 L 130 270"/>
+              <animate attributeName="opacity" values="0;0.6;0.6;0" dur="3s" repeatCount="indefinite" begin="4.95s"/>
+            </circle>
+          </g>
+
+          <!-- ── Node glow rings ── -->
+          <rect x="24" y="174" width="212" height="102" rx="22" fill="none" stroke="rgba(227,84,84,0.2)" stroke-width="2" style="animation: lcPulse 3s ease-in-out 0s infinite"/>
+          <rect x="364" y="14" width="232" height="97" rx="22" fill="none" stroke="rgba(227,84,84,0.2)" stroke-width="2" style="animation: lcPulse 3s ease-in-out 0.6s infinite"/>
+          <rect x="734" y="169" width="172" height="77" rx="22" fill="none" stroke="rgba(227,84,84,0.2)" stroke-width="2" style="animation: lcPulse 3s ease-in-out 1.2s infinite"/>
+          <rect x="504" y="379" width="182" height="82" rx="22" fill="none" stroke="rgba(227,84,84,0.2)" stroke-width="2" style="animation: lcPulse 3s ease-in-out 1.8s infinite"/>
+          <rect x="244" y="379" width="197" height="82" rx="22" fill="none" stroke="rgba(227,84,84,0.2)" stroke-width="2" style="animation: lcPulse 3s ease-in-out 2.4s infinite"/>
+
+          <!-- ── Main nodes ── -->
+          <!-- Monitor Production Traffic -->
+          <rect x="30" y="180" width="200" height="90" rx="16" fill="#0a0f1e" stroke="rgba(227,84,84,0.25)" stroke-width="1.5"/>
+          <rect x="30" y="180" width="200" height="90" rx="16" fill="url(#lcNodeGrad)" opacity="0.5"/>
+          <text x="130" y="215" text-anchor="middle" fill="#e0e2e6" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Monitor</text>
+          <text x="130" y="233" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Production Traffic</text>
+          <text x="130" y="251" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">with Guardrails</text>
+
+          <!-- Create LLM-as-Judge Eval -->
+          <rect x="370" y="20" width="220" height="85" rx="16" fill="#0a0f1e" stroke="rgba(227,84,84,0.25)" stroke-width="1.5"/>
+          <rect x="370" y="20" width="220" height="85" rx="16" fill="url(#lcNodeGrad)" opacity="0.5"/>
+          <text x="480" y="50" text-anchor="middle" fill="#e0e2e6" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Create</text>
+          <text x="480" y="68" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">LLM-as-Judge</text>
+          <text x="480" y="86" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Eval</text>
+
+          <!-- Eval Tuning -->
+          <rect x="740" y="175" width="160" height="65" rx="16" fill="#0a0f1e" stroke="rgba(227,84,84,0.25)" stroke-width="1.5"/>
+          <rect x="740" y="175" width="160" height="65" rx="16" fill="url(#lcNodeGrad)" opacity="0.5"/>
+          <text x="820" y="213" text-anchor="middle" fill="#e0e2e6" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Eval Tuning</text>
+
+          <!-- Score Development Traffic -->
+          <rect x="510" y="385" width="170" height="70" rx="16" fill="#0a0f1e" stroke="rgba(227,84,84,0.25)" stroke-width="1.5"/>
+          <rect x="510" y="385" width="170" height="70" rx="16" fill="url(#lcNodeGrad)" opacity="0.5"/>
+          <text x="595" y="415" text-anchor="middle" fill="#e0e2e6" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Score</text>
+          <text x="595" y="433" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Development Traffic</text>
+
+          <!-- Fine-tune SLM-as-Judge -->
+          <rect x="250" y="385" width="185" height="70" rx="16" fill="#0a0f1e" stroke="rgba(227,84,84,0.25)" stroke-width="1.5"/>
+          <rect x="250" y="385" width="185" height="70" rx="16" fill="url(#lcNodeGrad)" opacity="0.5"/>
+          <text x="342" y="415" text-anchor="middle" fill="#e0e2e6" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Fine-tune</text>
+          <text x="342" y="433" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">SLM-as-Judge</text>
+
+          <!-- ── Sub-nodes (LLM, Prompt, Dataset) ── -->
+          <rect x="388" y="132" width="56" height="28" rx="8" fill="#0f1525" stroke="rgba(227,84,84,0.15)" stroke-width="1"/>
+          <text x="416" y="150" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">LLM</text>
+          <rect x="452" y="132" width="56" height="28" rx="8" fill="#0f1525" stroke="rgba(227,84,84,0.15)" stroke-width="1"/>
+          <text x="480" y="150" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Prompt</text>
+          <rect x="516" y="132" width="60" height="28" rx="8" fill="#0f1525" stroke="rgba(227,84,84,0.15)" stroke-width="1"/>
+          <text x="546" y="150" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Dataset</text>
+
+          <!-- ── Edge labels ── -->
+          <rect x="171" y="45.5" width="140" height="34" rx="7" fill="rgba(15,21,37,0.9)" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <text x="241" y="58" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Identify Production</text>
+          <text x="241" y="72" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Edge Cases</text>
+
+          <rect x="624" y="45.5" width="160" height="34" rx="7" fill="rgba(15,21,37,0.9)" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <text x="704" y="58" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Add SME Annotated</text>
+          <text x="704" y="72" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Datasets</text>
+
+          <rect x="724" y="402" width="132" height="36" rx="7" fill="rgba(15,21,37,0.9)" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <text x="790" y="416" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">High-Accuracy</text>
+          <text x="790" y="430" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">LLM Eval</text>
+
+          <rect x="50" y="402" width="156" height="36" rx="7" fill="rgba(15,21,37,0.9)" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <text x="128" y="416" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">97% Inference Cost</text>
+          <text x="128" y="430" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Savings</text>
+
+          <!-- Autotune label -->
+          <rect x="852" y="124" width="72" height="28" rx="7" fill="rgba(15,21,37,0.9)" stroke="rgba(227,84,84,0.12)" stroke-width="1"/>
+          <text x="888" y="142" text-anchor="middle" fill="#a0a5b0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500">Autotune</text>
+        </svg>
+      </div>
+      <div class="book-featured-body">
+        <div class="book-featured-badge">
+          <span class="book-featured-badge-new">NEW</span>
+          <span class="book-featured-badge-free">FREE BOOK</span>
+        </div>
+        <h3 class="book-featured-title">Eval Engineering</h3>
+        <p class="book-featured-tagline">The emerging discipline of building trust in production AI systems. Master the science of AI evaluation — from metrics design to judge pipelines.</p>
+        <div class="book-featured-topics">
+          <span class="book-featured-topic">Eval Metrics</span>
+          <span class="book-featured-topic">LLM-as-Judge</span>
+          <span class="book-featured-topic">RAG Evaluation</span>
+          <span class="book-featured-topic">Agent Evals</span>
+          <span class="book-featured-topic">Human-AI Alignment</span>
+        </div>
+        <div class="book-featured-meta">
+          <span>~100 pages</span>
+          <span>·</span>
+          <span>Open access</span>
+        </div>
+        <div class="book-featured-cta">Read Free <span>→</span></div>
+      </div>
+    </a>
 
     <div class="books-grid">
       <a href="https://galileo.ai/multi-agent-book" target="_blank" class="book-card">
@@ -1731,34 +2251,70 @@
   </div>
 </section>
 
-<!-- ═══ OPEN SOURCE ═══ -->
+<!-- ═══ BENCHMARKS & OPEN SOURCE ═══ -->
 <section id="oss">
   <div class="container">
     <div class="section-header">
       <div class="section-num">02</div>
-      <div class="section-label">Open Source</div>
-      <h2 class="section-title">Tools the AI community<br>actually uses</h2>
-      <p class="section-subtitle">Models, datasets, and benchmarks built in the open. Because evaluation should never be locked away behind a paywall.</p>
+      <div class="section-label">Benchmarks & Open Source</div>
+      <h2 class="section-title">Measuring what matters<br>in production AI</h2>
+      <p class="section-subtitle">Benchmarks, datasets, and models built in the open. Because evaluation should never be locked away behind a paywall.</p>
     </div>
-    <div class="oss-grid-2x2">
-      <div class="oss-card">
-        <span class="oss-tag">Live Benchmark</span>
-        <div class="oss-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.504-1.125-1.125-1.125h-.872a2.25 2.25 0 0 1-1.614-.682l-1.014-1.046a2.25 2.25 0 0 0-1.625-.682h-.5a2.25 2.25 0 0 0-1.625.682l-1.014 1.046a2.25 2.25 0 0 1-1.614.682h-.872c-.621 0-1.125.504-1.125 1.125V18.75M12 6.75V3.375m0 3.375a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75Z"/></svg></div>
-        <h3>Agent Leaderboard</h3>
-        <p>An open, live benchmark ranking LLMs as enterprise support agents across real-world tasks and domains. The community's go-to reference for production agent evaluation. 445+ likes on HuggingFace.</p>
-        <div class="oss-links-row">
-          <a href="https://huggingface.co/spaces/galileo-ai/agent-leaderboard" target="_blank" class="oss-link">Live Leaderboard →</a>
-          <a href="https://galileo.ai/blog/agent-leaderboard-v2" target="_blank" class="oss-link-secondary">v2 Blog Post</a>
-          <a href="https://galileo.ai/blog/agent-leaderboard" target="_blank" class="oss-link-secondary">v1 Blog Post</a>
+
+    <!-- ── Agent Leaderboard Featured Card ── -->
+    <a href="https://galileo.ai/blog/agent-leaderboard-v2" target="_blank" class="bench-featured">
+      <div class="bench-featured-cover">
+        <img src="https://framerusercontent.com/images/viyh47ecl3nYred35EfWosYkA.jpg" alt="Agent Leaderboard v2 cover" loading="lazy" />
+      </div>
+      <div class="bench-featured-body">
+        <div class="book-featured-badge">
+          <span class="book-featured-badge-new">FLAGSHIP</span>
+          <span class="book-featured-badge-free">LIVE</span>
+        </div>
+        <h3 class="bench-featured-title">Agent Leaderboard v2</h3>
+        <p class="bench-featured-desc">The enterprise-grade benchmark for AI agents. Tests 30+ LLMs across 500 real-world multi-turn support scenarios spanning banking, healthcare, investment, telecom, and insurance.</p>
+        <div class="bench-stats-row">
+          <div class="bench-stat">
+            <div class="bench-stat-val">500</div>
+            <div class="bench-stat-label">Scenarios</div>
+          </div>
+          <div class="bench-stat">
+            <div class="bench-stat-val">5</div>
+            <div class="bench-stat-label">Domains</div>
+          </div>
+          <div class="bench-stat">
+            <div class="bench-stat-val">30+</div>
+            <div class="bench-stat-label">Models</div>
+          </div>
+          <div class="bench-stat">
+            <div class="bench-stat-val">445+</div>
+            <div class="bench-stat-label">HF Likes</div>
+          </div>
+        </div>
+        <div class="bench-links-row">
+          <span class="oss-link">Leaderboard →</span>
+          <span class="oss-link-secondary">Dataset</span>
+          <span class="oss-link-secondary">Code</span>
         </div>
       </div>
+    </a>
+    <!-- Deep links row (separate <a> tags since parent is already a link) -->
+    <div class="bench-deep-links">
+      <a href="https://huggingface.co/spaces/galileo-ai/agent-leaderboard" target="_blank" class="oss-link">Live Leaderboard →</a>
+      <a href="https://huggingface.co/datasets/galileo-ai/agent-leaderboard-v2" target="_blank" class="oss-link-secondary">Dataset on HuggingFace</a>
+      <a href="https://github.com/rungalileo/agent-leaderboard/" target="_blank" class="oss-link-secondary">Code on GitHub</a>
+      <a href="https://galileo.ai/blog/agent-leaderboard" target="_blank" class="oss-link-secondary">v1 Blog</a>
+    </div>
+
+    <!-- ── Other Benchmarks Grid ── -->
+    <div class="oss-grid-2x2" style="margin-top: 2px;">
       <div class="oss-card">
-        <span class="oss-tag">Dataset</span>
-        <div class="oss-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"/></svg></div>
-        <h3>Agent Eval Dataset</h3>
-        <p>A multi-domain evaluation dataset powering the Agent Leaderboard, covering diverse enterprise support scenarios to stress-test agent reliability, consistency, and safety across domains.</p>
+        <span class="oss-tag">Research Index</span>
+        <div class="oss-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.3 24.3 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5m-4.75-11.396c.251.023.501.05.75.082M19 14.5l1.28 1.172a2.25 2.25 0 0 1 .298 2.918l-1.15 1.723a2.25 2.25 0 0 1-1.872 1.004H6.444a2.25 2.25 0 0 1-1.872-1.004l-1.15-1.723a2.25 2.25 0 0 1 .298-2.918L5 14.5m14 0H5"/></svg></div>
+        <h3>Hallucination Index</h3>
+        <p>A living index tracking factual reliability and hallucination rates across foundation models. Gives engineering teams the data they need to pick the right model for accuracy-critical workloads.</p>
         <div class="oss-links-row">
-          <a href="https://huggingface.co/datasets/galileo-ai/agent-leaderboard-v2" target="_blank" class="oss-link">View on HuggingFace →</a>
+          <a href="https://github.com/rungalileo/hallucination-index" target="_blank" class="oss-link">View on GitHub →</a>
         </div>
       </div>
       <div class="oss-card">
@@ -1769,15 +2325,6 @@
         <div class="oss-links-row">
           <a href="https://themaximalists.substack.com/p/brag" target="_blank" class="oss-link">Read the Research →</a>
           <a href="https://github.com/bhavsarpratik" target="_blank" class="oss-link-secondary">GitHub</a>
-        </div>
-      </div>
-      <div class="oss-card">
-        <span class="oss-tag">Research Index</span>
-        <div class="oss-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.3 24.3 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5m-4.75-11.396c.251.023.501.05.75.082M19 14.5l1.28 1.172a2.25 2.25 0 0 1 .298 2.918l-1.15 1.723a2.25 2.25 0 0 1-1.872 1.004H6.444a2.25 2.25 0 0 1-1.872-1.004l-1.15-1.723a2.25 2.25 0 0 1 .298-2.918L5 14.5m14 0H5"/></svg></div>
-        <h3>Hallucination Index</h3>
-        <p>A living index tracking factual reliability and hallucination rates across foundation models. Gives engineering teams the data they need to pick the right model for accuracy-critical workloads.</p>
-        <div class="oss-links-row">
-          <a href="https://github.com/rungalileo/hallucination-index" target="_blank" class="oss-link">View on GitHub →</a>
         </div>
       </div>
     </div>
@@ -1895,7 +2442,7 @@
           </div>
           <span class="timeline-badge">Current</span>
         </div>
-        <p class="timeline-desc">Leading open-source evaluations and developer relations. Built the Agent Leaderboard (open benchmark for AI agents), the Hallucination Index, and the BRAG model series. Authored 4 books on GenAI published under the Mastering GenAI Series.</p>
+        <p class="timeline-desc">Leading open-source evaluations and developer relations. Built the Agent Leaderboard (open benchmark for AI agents), the Hallucination Index, and the BRAG model series. Authored 5 books on GenAI published under the Mastering GenAI Series.</p>
         <div class="timeline-tags">
           <span class="tag">Agent Evaluation</span><span class="tag">RAG</span><span class="tag">Open Source</span><span class="tag">Developer Relations</span><span class="tag">Series A</span>
         </div>
@@ -2192,7 +2739,7 @@
   // ═══ SCROLL REVEAL ═══
   var revealTargets = document.querySelectorAll(
     '.section-header, .books-grid, .about-body, .about-photo-wrap, ' +
-    '.oss-grid-2x2, .talks-grid, .timeline, .cw-grid, ' +
+    '.bench-featured, .bench-deep-links, .oss-grid-2x2, .talks-grid, .timeline, .cw-grid, ' +
     '.talks-playlist-btn, .books-note'
   );
   revealTargets.forEach(function(el) { el.classList.add('reveal'); });
