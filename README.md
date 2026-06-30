@@ -36,7 +36,7 @@ images/
 4. **About** — Full bio, career narrative, education, key highlights
 5. **Open Source** — Agent Leaderboard, Hallucination Index, BRAG
 6. **Talks** — 6 featured talks from 11-video YouTube playlist
-7. **Experience** — Full career timeline (Galileo → Maxpool → Enterpret → Jina → TaskHuman → Morningstar)
+7. **Experience** — Full career timeline (Cisco → Galileo → Maxpool → Enterpret → Jina → TaskHuman → Morningstar)
 8. **Community & Writing** — Maxpool, Substack (pakodas), galileo.ai/blog
 9. **Recognition** — Top AI Developer 2023, Andrew Ng newsletter, Latent Space, hackathon wins
 10. **Contact** — Social links grid (LinkedIn, Twitter, GitHub, Substack, Maxpool, Email)
