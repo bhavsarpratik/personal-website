@@ -1678,6 +1678,13 @@
       grid-template-columns: minmax(300px, .76fr) minmax(0, 1.24fr);
       gap: clamp(36px, 5vw, 74px);
     }
+    .section-grid > *,
+    .wide-card > *,
+    .tile-grid > *,
+    .benchmark-media-grid > *,
+    .timeline-item > * {
+      min-width: 0;
+    }
     .section-head { margin-bottom: 34px; }
     .support-grid { margin-top: 26px; }
     .section-grid > :first-child { position: sticky; top: 116px; }
@@ -1901,6 +1908,10 @@
         margin: -18px 0 0;
       }
       .hero-proof { width: 100%; }
+      .section-grid,
+      .wide-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
       .section-grid > :first-child { position: static; }
       .wide-card-body { border-right: 0; border-bottom: 1px solid rgba(244,242,236,.1); }
       section.content-section { padding: 66px 0; }
