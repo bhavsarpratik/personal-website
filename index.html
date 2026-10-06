@@ -255,6 +255,8 @@
     .entry .links { margin-top: 12px; }
     .entry .meta { margin: 6px 0 0; text-align: right; white-space: nowrap; }
 
+    .feature + .feature { margin-top: 16px; }
+    .feature-media.wide { aspect-ratio: 2 / 1; background: #0b1530; }
     .feature-media.light { aspect-ratio: 1200 / 630; background: #f5f6f8; }
 
     /* BRAG scores */
@@ -449,7 +451,7 @@
       <div class="wrap sec-grid">
         <header class="sec-head">
           <p class="tag mono">Tools</p>
-          <h2>Tools that show what AI work costs.</h2>
+          <h2>Tool that shows what AI work costs.</h2>
         </header>
         <article class="feature">
           <div class="feature-media">
@@ -541,19 +543,20 @@
               </div>
             </div>
           </article>
-          <div class="entries">
-            <article class="entry">
-              <div>
-                <h3>Hallucination Index</h3>
-                <p class="desc">Hallucination rates across foundation models and task types.</p>
-                <div class="links">
-                  <a href="https://galileo.ai/hallucination-index" target="_blank" rel="noopener noreferrer">Report ↗</a>
-                  <a href="https://github.com/rungalileo/hallucination-index" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-                </div>
+          <article class="feature">
+            <div class="feature-media wide">
+              <img src="images/hallucination-index.jpg" alt="LLM Hallucination Index graphic" loading="lazy" width="1200" height="600" />
+            </div>
+            <div class="feature-body">
+              <h3>Hallucination Index</h3>
+              <p class="meta mono">Open source · RAG</p>
+              <p class="desc">A ranking of how often foundation models hallucinate across RAG tasks and context lengths.</p>
+              <div class="links">
+                <a href="https://galileo.ai/hallucination-index" target="_blank" rel="noopener noreferrer">Report ↗</a>
+                <a href="https://github.com/rungalileo/hallucination-index" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
-              <p class="meta mono">Open source</p>
-            </article>
-          </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
